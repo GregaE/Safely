@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { homeNavigationType } from '../types/types';
+// import RNImmediateCallLibrary from 'react-native-immediate-call-library';
 
 export default function Home() {
 
@@ -11,7 +12,7 @@ export default function Home() {
   }
 
   function callEmergency() {
-    return
+    // RNImmediateCallLibrary.immediateCall('0038641393446');
   }
 
   function ringAlarm() {
