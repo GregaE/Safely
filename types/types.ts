@@ -8,5 +8,5 @@ export type RootStackParamList = {
 // Screens
 
 export type homeNavigationType=StackNavigationProp<RootStackParamList, "Home">
-
 export type settingsNavigationType=StackNavigationProp<RootStackParamList, "Settings">
+

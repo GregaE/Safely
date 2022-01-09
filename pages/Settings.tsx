@@ -12,33 +12,36 @@ export default function Settings() {
   const navigation = useNavigation<settingsNavigationType>();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchContactList = async () => {
       const { status } = await Contacts.requestPermissionsAsync();
       setStatus(status)
       if (status === 'granted') {
         const { data } = await Contacts.getContactsAsync({
           fields: [Contacts.Fields.PhoneNumbers],
         });
-        console.log(data)
-        console.log(data[6].firstName)
-        if(data[6].phoneNumbers !== undefined){
-          console.log(data[6].phoneNumbers[0].number!)
+        if (data.length > 0) {
+          let filteredArray = data.reduce(function(filtered: {name: string, phone: string}[], contact) {
+            if (contact.name && contact.phoneNumbers && contact.phoneNumbers[0].number) {
+              const filteredContact = { name: contact.name, phone: contact.phoneNumbers[0].number }
+              filtered.push(filteredContact);
+            }
+            return filtered;
+          }, []);
+          setContacts(filteredArray)
         }
-        // if (data.length > 0) {
-        //   const contact = data[0];
-        //   console.log(data)
-        //   setContacts(contact)
-        // }
       }
     };
+    fetchContactList()
+  }, [])
 
-    fetchData()
- }, [])
+  function renderContacts() {
+
+  }
 
   return (
     <View style={styles.container}>
       <Text>{status}</Text>
-      {/* <Text>{contacts}</Text> */}
+      {renderContacts()}
       <Button
         onPress={() => navigation.navigate('Home')}
         title="Home"
