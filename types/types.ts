@@ -10,3 +10,10 @@ export type RootStackParamList = {
 export type homeNavigationType=StackNavigationProp<RootStackParamList, "Home">
 export type settingsNavigationType=StackNavigationProp<RootStackParamList, "Settings">
 
+// Data
+
+export interface ContactInterface {
+  id: string,
+  name: string,
+  phone: string
+}
