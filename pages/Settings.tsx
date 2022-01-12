@@ -42,7 +42,7 @@ export default function Settings() {
 
   return (
     <View style={styles.container}>
-      <Text>{status}</Text>
+      <Text>Select emergency contact</Text>
       <DropdownComponent contacts={contacts} />
       <Button
         onPress={() => navigation.navigate('Home')}

@@ -34,8 +34,6 @@ const DropdownComponent = ( props: Props ) => {
     return null;
   };
 
-  console.log(props.contacts.map(contact => contact.name))
-
   return (
     <View style={styles.container}>
       {renderLabel()}
@@ -46,7 +44,7 @@ const DropdownComponent = ( props: Props ) => {
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
         data={props.contacts.map(function(contact) {
-            return { label: contact.name + ' ' + contact.phone, value:contact.phone }
+            return { label: contact.name + ': ' + contact.phone, value:contact.phone }
           }).reverse()
         }
         // data={data}
@@ -68,7 +66,7 @@ const DropdownComponent = ( props: Props ) => {
             style={styles.icon}
             color={isFocus ? 'blue' : 'black'}
             name="Safety"
-            size={50}
+            size={20}
           />
         )}
       />
@@ -84,7 +82,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   dropdown: {
-    height: 50,
+    height: 90,
     borderColor: 'gray',
     borderWidth: 0.5,
     borderRadius: 8,
@@ -96,18 +94,22 @@ const styles = StyleSheet.create({
   },
   label: {
     position: 'absolute',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     left: 22,
     top: 8,
     zIndex: 999,
     paddingHorizontal: 8,
     fontSize: 14,
+    height: 30
   },
   placeholderStyle: {
     fontSize: 16,
   },
   selectedTextStyle: {
     fontSize: 16,
+    height: 40,
+    flex: 1,
+    textAlignVertical: 'center',
   },
   iconStyle: {
     width: 20,
